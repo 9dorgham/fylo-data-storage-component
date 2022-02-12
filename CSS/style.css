@@ -1,0 +1,202 @@
+* {
+    margin: 0%;
+    box-sizing: border-box;
+}
+body {
+    background-color: hsl(229, 57%, 11%);
+    overflow: hidden;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+}
+body::after {
+    content: url("../images/bg-desktop.png");
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+    z-index: -1;
+}
+.bollets {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1.2em;
+}
+.bollets span {
+    width: 2em;
+    height: 2em;
+    background-color: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    animation-name: loading;
+    animation-duration: 1s;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+.bollets span:nth-child(2) {
+    animation-delay: calc(.5s / 3);
+}
+.bollets span:nth-child(3) {
+    animation-delay: calc(1s / 3);
+}
+@keyframes loading {
+    0% {
+        opacity: 0;
+        transform: translateY(-.8em);
+    }
+    80% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+    }
+}
+main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    display: grid;
+    gap: 2em;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 20em), 1fr));
+    opacity: 0;
+    animation-name: content;
+    animation-delay: 1s;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+nav {
+    justify-self: center;
+    width: 20em;
+    background-color: hsl(228, 56%, 26%);
+    padding: 1em;
+    height: 10em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: .5em 5em .5em .5em;
+}
+nav .icon {
+    border: .5em solid hsl(229, 57%, 11%);
+    border-radius: .5em;
+    background-color: hsl(229, 57%, 11%);
+    margin: .4em;
+}
+nav .logo {
+    content: url("../images/logo.svg");
+    width: 10em;
+    height: 3em;
+}
+nav .doc {
+    content: url("../images/icon-document.svg");
+}
+nav .folder {
+    content: url("../images/icon-folder.svg");
+}
+nav .upload {
+    content: url("../images/icon-upload.svg");
+}
+.usage {
+    align-self: end;
+    position: relative;
+    background-color: hsl(228, 56%, 26%);
+    color: #fff;
+    padding: 2em;
+    height: 8em;
+    margin: .8em;
+    border-radius: 1em;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(3, auto);
+    row-gap: 1em;
+}
+.usage p {
+    grid-area: 1 / 1 / 2 / 4;
+    color: rgb(255, 255, 255, .5);
+}
+.usage p span {
+    color: #fff;
+}
+.usage .bar {
+    grid-area: 2 / 1 / 3 / 4;
+    border-radius: .5em;
+    background-color: hsl(229, 57%, 11%);
+    outline: .15em solid hsl(229, 57%, 11%);
+}
+.usage .bar .gradient {
+    height: 1em;
+    width: 70%;
+    background-image: linear-gradient(to right, hsl(6, 100%, 80%), hsl(335, 100%, 65%));
+    border-radius: .5em;
+    outline: .15em solid #000;
+    position: relative;
+}
+.usage .bar .gradient::after {
+    content: '';
+    width: .8em;
+    height: .8em;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    right: 1%;
+    transform: translateY(-50%);
+    border-radius: .8em;
+}
+.usage span:first-of-type {
+    grid-area: 3 / 1 / 4 / 2;
+}
+.usage span:last-of-type {
+    grid-area: 3 / 3 / 4 / 4;
+}
+.usage .bin {
+    color: hsl(229, 7%, 55%);
+    background-color: #fff;
+    padding: 1em 2em;
+    border-radius: .5em;
+    position: absolute;
+    right: 10%;
+    top: -40%;
+}
+.usage .bin span {
+    color: #000;
+    font-size: 2em;
+    font-weight: bold;
+}
+.usage .bin::after {
+    content: '';
+    height: 0%;
+    width: 0%;
+    position: absolute;
+    bottom: -30%;
+    right: 0%;
+    border: 2em solid transparent;
+    border-right-color: #fff;
+    transform: rotate(0deg, 0deg);
+}
+@media (max-width: 375px) {
+    body::after {
+        content: url("../images/bg-mobile.png");
+    }
+    .usage {
+        padding-bottom: 10em;
+    }
+    .usage .bin {
+        top: 80%;
+        right: 50%;
+        transform: translate(50%);
+    }
+    .usage .bin::after {
+        content: none;
+    }
+}
+@keyframes content {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+} 
